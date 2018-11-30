@@ -1,0 +1,6 @@
+Grid Value	Acronym	Class
+2	D	"Devonian limestone, dolomite"
+7	P	"Permian sandstone, limestone"
+8	Pt	Proterozoic granite
+9	Q	"Quaternary clay, sand, gravel"
+12	T	"Triassic clastic rock with carbonate, volcanic"

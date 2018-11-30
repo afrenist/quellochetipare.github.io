@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SAGA_METADATA>
+  <HISTORY saga-version="5.0.0">
+    <TOOL library="table_tools" id="4" name="Join Attributes from a Table (Shapes)">
+      <OPTION type="table_field" id="ID_A" name="Identifier" index="0">ID</OPTION>
+      <OPTION type="table_field" id="ID_B" name="Identifier" index="0">ID</OPTION>
+      <OPTION type="boolean" id="FIELDS_ALL" name="Add All Fields">TRUE</OPTION>
+      <OPTION type="boolean" id="KEEP_ALL" name="Keep All">TRUE</OPTION>
+      <OPTION type="boolean" id="CMP_CASE" name="Case Sensitive String Comparison">TRUE</OPTION>
+      <INPUT type="shapes" id="TABLE_A" name="Shapes">
+        <TOOL library="shapes_grid" id="6" name="Vectorising Grid Classes">
+          <OPTION type="grid_system" id="PARAMETERS_GRID_SYSTEM" name="Grid system">
+            <CELLSIZE>100</CELLSIZE>
+            <XMIN>300335.5737613993</XMIN>
+            <XMAX>312335.5737613993</XMAX>
+            <YMIN>3369413.648663399</YMIN>
+            <YMAX>3377613.648663399</YMAX>
+          </OPTION>
+          <OPTION type="choice" id="CLASS_ALL" name="Class Selection" index="1">all classes</OPTION>
+          <OPTION type="choice" id="SPLIT" name="Vectorised class as..." index="0">one single (multi-)polygon object</OPTION>
+          <OPTION type="boolean" id="ALLVERTICES" name="Keep Vertices on Straight Lines">FALSE</OPTION>
+          <INPUT type="grid" id="GRID" name="Grid" system="PARAMETERS_GRID_SYSTEM">
+            <TOOL library="io_gdal" id="0" name="Import Raster">
+              <OPTION type="file" id="FILES" name="Files">"G:\Lavoro\Haakon\Dataset4Courses\RasterData\AvgPrecipitation.tif" "G:\Lavoro\Haakon\Dataset4Courses\RasterData\AvgTempDiff.tif" "G:\Lavoro\Haakon\Dataset4Courses\RasterData\Dist2Faults.tif" "G:\Lavoro\Haakon\Dataset4Courses\RasterData\Dist2GeoBoundaries.tif" "G:\Lavoro\Haakon\Dataset4Courses\RasterData\Elevation.tif" "G:\Lavoro\Haakon\Dataset4Courses\RasterData\Elevation.tif.aux.xml" "G:\Lavoro\Haakon\Dataset4Courses\RasterData\GLC.tif" "G:\Lavoro\Haakon\Dataset4Courses\RasterData\LandslideCounts.tif" "G:\Lavoro\Haakon\Dataset4Courses\RasterData\Lithology.tif" "G:\Lavoro\Haakon\Dataset4Courses\RasterData\MILushan.tif" "G:\Lavoro\Haakon\Dataset4Courses\RasterData\PlanCur.tif" "G:\Lavoro\Haakon\Dataset4Courses\RasterData\ProfCur.tif" "G:\Lavoro\Haakon\Dataset4Courses\RasterData\RSP.tif" "G:\Lavoro\Haakon\Dataset4Courses\RasterData\Slope.tif" "G:\Lavoro\Haakon\Dataset4Courses\RasterData\SU.tif" "G:\Lavoro\Haakon\Dataset4Courses\RasterData\TWI.tif"</OPTION>
+              <OPTION type="choice" id="MULTIPLE" name="Multiple Bands Output" index="2">automatic</OPTION>
+              <OPTION type="boolean" id="SELECT" name="Select from Multiple Bands">FALSE</OPTION>
+              <OPTION type="boolean" id="TRANSFORM" name="Transformation">FALSE</OPTION>
+              <OUTPUT type="grid_list" id="GRIDS" name="Grids">SU</OUTPUT>
+            </TOOL>
+          </INPUT>
+          <OUTPUT type="shapes" id="POLYGONS" name="Polygons">SU</OUTPUT>
+        </TOOL>
+      </INPUT>
+      <INPUT type="table" id="TABLE_B" name="Join Table">
+        <TOOL library="io_table" id="1" name="Import Text Table">
+          <OPTION type="boolean" id="HEADLINE" name="Headline">TRUE</OPTION>
+          <OPTION type="choice" id="SEPARATOR" name="Separator" index="0">tabulator</OPTION>
+          <OPTION type="file" id="FILENAME" name="File">G:\Lavoro\Haakon\Dataset4Courses\Rdata\LSE4course.txt</OPTION>
+          <OUTPUT type="table" id="TABLE" name="Table">LSE4course</OUTPUT>
+        </TOOL>
+      </INPUT>
+      <OUTPUT type="shapes" id="RESULT" name="Result">SU [LSE4course]</OUTPUT>
+    </TOOL>
+  </HISTORY>
+  <SOURCE>
+    <FILE></FILE>
+    <DATABASE>
+      <FIELDS>
+        <FIELD TYPE="DOUBLE">ID</FIELD>
+        <FIELD TYPE="DOUBLE">mean</FIELD>
+        <FIELD TYPE="DOUBLE">sd</FIELD>
+        <FIELD TYPE="DOUBLE">0.025quant</FIELD>
+        <FIELD TYPE="DOUBLE">0.5quant</FIELD>
+        <FIELD TYPE="DOUBLE">0.975quant</FIELD>
+        <FIELD TYPE="DOUBLE">mode</FIELD>
+        <FIELD TYPE="DOUBLE">kld</FIELD>
+      </FIELDS>
+    </DATABASE>
+    <PROJECTION>
+      <OGC_WKT>PROJCS["WGS_1984_UTM_Zone_48N",GEOGCS["GCS_WGS_1984",DATUM["D_WGS_1984",SPHEROID["WGS_1984",6378137,298.257223563]],PRIMEM["Greenwich",0],UNIT["degree",0.0174532925199433]],PROJECTION["Transverse_Mercator"],PARAMETER["latitude_of_origin",0],PARAMETER["central_meridian",105],PARAMETER["scale_factor",0.9996],PARAMETER["false_easting",500000],PARAMETER["false_northing",0],UNIT["metre",1,AUTHORITY["EPSG","9001"]]]</OGC_WKT>
+      <PROJ4>+proj=utm +zone=48 +ellps=WGS84 +units=m +no_defs </PROJ4>
+      <EPSG>-1</EPSG>
+    </PROJECTION>
+  </SOURCE>
+  <DESCRIPTION></DESCRIPTION>
+</SAGA_METADATA>
